@@ -63,3 +63,18 @@ Curso Full Cycle: Desenvolvimento de aplicações modernas e escaláveis com mic
 - ksqlDB (Sql de consultado do mongoDB)
 - Streams
 
+# Comandos Kafka
+- cd apache-kafka && sudo docker-compose up -d //   subir Kafka
+- cd apache-kafka && sudo docker exec -it apache-kafka_kafka_1 bash
+ -> kafka-console-consumer --bootstrap-server=localhost:9092 --topic=route.new-direction --group=terminal
+ -> kafka-console-producer --bootstrap-server=localhost:9092 --topic=route.new-direction
+
+# Comandos Simulador
+- cd simulator && sudo docker-compose up -d //   subir simulador
+- cd simulator && sudo docker-compose ps
+- cd simulator && sudo docker exec -it simulator bash
+ -> go mod init github.com/codeedu/imersao-fsfc2/simulator
+ -> go run main.go
+
+
+
