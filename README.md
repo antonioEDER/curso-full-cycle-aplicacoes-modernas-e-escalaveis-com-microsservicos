@@ -76,5 +76,7 @@ Curso Full Cycle: Desenvolvimento de aplicações modernas e escaláveis com mic
  -> go mod init github.com/codeedu/imersao-fsfc2/simulator
  -> go run main.go
 
+# Desafios
+- Você terá que publicar uma imagem no docker hub.
 
 
