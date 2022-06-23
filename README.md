@@ -63,6 +63,19 @@ Curso Full Cycle: Desenvolvimento de aplicações modernas e escaláveis com mic
 - ksqlDB (Sql de consultado do mongoDB)
 - Streams
 
+# Sobre o Next.js
+- Framework Nodejs para MVC
+- Coc Convencion Over configuration
+- TypeScript
+- Arquitetura escalavel
+- Integracão facil
+- Suporte microsservices
+- Suporte API REST e GraphQL
+- `npx @nestjs/cli new nest-api`
+- cd nest-api && sudo docker-compose up
+- cd nest-api && docker-compose exec app bash
+    - $ nest g resource routes
+
 # Comandos Kafka
 - cd apache-kafka && sudo docker-compose up -d //   subir Kafka
 - cd apache-kafka && sudo docker exec -it apache-kafka_kafka_1 bash
