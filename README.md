@@ -72,6 +72,11 @@ Curso Full Cycle: Desenvolvimento de aplicações modernas e escaláveis com mic
 - Suporte microsservices
 - Suporte API REST e GraphQL
 - `npx @nestjs/cli new nest-api`
+- Estruturas:
+    - ./main.ts = geração da instãncias
+    - ./src/app.module.ts = importação dos modulos
+    - ./src/app.controller.ts = controladores de roteamentos
+    - ./src/app.service.ts = Serviços e regra de negocio - logica
 - cd nest-api && sudo docker-compose up
 - cd nest-api && docker-compose exec app bash
     - $ nest g resource routes
