@@ -1,17 +1,43 @@
 import { Module } from '@nestjs/common';
 import { RoutesService } from './routes.service';
+import { RoutesController } from './routes.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AppController } from 'src/app.controller';
-import { AppService } from 'src/app.service';
-import { ConfigModule } from '@nestjs/config';
+import { Route, RouteSchema } from './entities/route.entity';
+import { ClientsModule, Transport } from '@nestjs/microservices';
+import { RoutesGateway } from './routes.gateway';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
-    RoutesModule,
-    MongooseModule.forRoot(process.env.MONGO_DSN),
+    MongooseModule.forFeature([{ name: Route.name, schema: RouteSchema }]),
+    ClientsModule.registerAsync([
+      {
+        name: 'KAFKA_SERVICE',
+        useFactory: (): any => ({
+          transport: Transport.KAFKA,
+          options: {
+            client: {
+              clientId: process.env.KAFKA_CLIENT_ID,
+              brokers: [process.env.KAFKA_BROKER],
+              ssl: true,
+              sasl: {
+                mechanism: 'plain', // scram-sha-256 or scram-sha-512
+                username: process.env.KAFKA_SASL_USERNAME,
+                password: process.env.KAFKA_SASL_PASSWORD,
+              },
+            },
+            consumer: {
+              groupId:
+                !process.env.KAFKA_CONSUMER_GROUP_ID ||
+                process.env.KAFKA_CONSUMER_GROUP_ID === ''
+                  ? 'my-consumer-' + Math.random()
+                  : process.env.KAFKA_CONSUMER_GROUP_ID,
+            },
+          },
+        }),
+      },
+    ]),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [RoutesController],
+  providers: [RoutesService, RoutesGateway],
 })
 export class RoutesModule {}

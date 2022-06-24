@@ -83,7 +83,7 @@ Curso Full Cycle: Desenvolvimento de aplicações modernas e escaláveis com mic
 
 # Comandos Kafka
 - cd apache-kafka && sudo docker-compose up -d //   subir Kafka
-- cd apache-kafka && sudo docker exec -it apache-kafka_kafka_1 bash
+- cd apache-kafka && sudo docker exec -it apache-kafka-kafka-1 bash
  -> kafka-console-consumer --bootstrap-server=localhost:9092 --topic=route.new-direction --group=terminal
  -> kafka-console-producer --bootstrap-server=localhost:9092 --topic=route.new-direction
 
